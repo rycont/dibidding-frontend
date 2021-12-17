@@ -1,5 +1,6 @@
 import { styled } from "#/stitches.config";
 import { Field } from 'formik';
+import { Description } from "..";
 
 export const LogicalInput = styled(Field, {
     padding: "3rem",
@@ -25,4 +26,8 @@ export const LogicalInput = styled(Field, {
         // fontSize: "1.5rem"
         display: "none"
     }
+})
+
+export const ErrorText = styled(Description, {
+    color: "#B91919"
 })

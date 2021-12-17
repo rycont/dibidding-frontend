@@ -1,6 +1,6 @@
 import { HTMLAttributes } from "react";
 import { Description, Vexile } from "..";
-import { LogicalInput } from "./style";
+import { ErrorText, LogicalInput } from "./style";
 
 export const Input: React.FC<
   React.HTMLAttributes<HTMLInputElement> & {
@@ -10,6 +10,7 @@ export const Input: React.FC<
     accept?: string;
     as?: "textarea" | "select";
     css?: Record<string, string | number>;
+    error?: string | boolean;
   }
 > = (props) => {
   return (
@@ -22,6 +23,7 @@ export const Input: React.FC<
         as={props.as}
         css={props.css}
       />
+      {props.error && <ErrorText>{props.error}</ErrorText>}
     </Vexile>
   );
 };

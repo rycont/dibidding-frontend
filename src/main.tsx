@@ -2,11 +2,13 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "josa-complete";
 import { RecoilRoot } from "recoil";
+import RecoilNexus from "recoil-nexus";
 import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 
 import { globalCss } from "#/stitches.config";
 import {
+  AuthBrancher,
   BiddingMain,
   EnterBiddingProductInfo,
   Login,
@@ -64,6 +66,7 @@ const AnimatedRouter = () => {
             path="/register/success"
             element={<ProductRegisterSuccess />}
           />
+          <Route path="/" element={<AuthBrancher />} />
         </Routes>
       </CSSTransition>
     </TransitionGroup>
@@ -73,6 +76,7 @@ const AnimatedRouter = () => {
 ReactDOM.render(
   <React.StrictMode>
     <RecoilRoot>
+      <RecoilNexus />
       <BrowserRouter>
         <AnimatedRouter />
       </BrowserRouter>

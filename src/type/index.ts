@@ -1,7 +1,9 @@
 export interface TypeUser {
-    name: string;
-    uid: string; // not 학번
-    banned: boolean;
+    name: string
+    user_id: string
+    user_photo: string
+    student_id: string
+    dimigoin_uid: number
 }
 
 export interface TypeProduct {

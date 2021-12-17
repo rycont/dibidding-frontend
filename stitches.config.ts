@@ -23,7 +23,11 @@ export const {
       borderRadius: "1.5rem",
     }),
     accentShadow: () => ({
-      boxShadow: "6px 6px 0px rgba(0, 0, 0, 0.3)"
+      boxShadow: "6px 6px 0px rgba(0, 0, 0, 0.3)",
+      transition: "box-shadow 100ms",
+      "&:focus": {
+        boxShadow: "10px 10px 0px rgba(0, 0, 0, 0.4)",
+      }
     })
   }
 });
