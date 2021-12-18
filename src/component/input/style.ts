@@ -1,8 +1,7 @@
 import { styled } from "#/stitches.config";
-import { Field } from 'formik';
 import { Description } from "..";
 
-export const LogicalInput = styled(Field, {
+export const LogicalInput = styled('input', {
     padding: "3rem",
     outline: 'none',
     fontSize: "2rem",
@@ -17,13 +16,6 @@ export const LogicalInput = styled(Field, {
         color: "rgba(0, 0, 0, 0.3)",
     },
     "&::file-selector-button": {
-        // border: "1px solid rgba(0, 0, 0, 0.1)",
-        // background: "#FFFFFF",
-        // padding: "1rem",
-        // borderRadius: "1rem",
-        // marginRight: "1rem",
-        // fontFamily: "NEXON Lv1 Gothic OTF",
-        // fontSize: "1.5rem"
         display: "none"
     }
 })

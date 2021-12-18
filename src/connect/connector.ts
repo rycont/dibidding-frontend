@@ -43,7 +43,9 @@ export function createAPIConnector<
 
         const user = getRecoil(tokenAtom)
 
-        if (!user) throw new Error("Not logged in")
+        if (!user) {
+            throw new Error("NEEDAUTH");
+        }
 
         return {
             'Content-Type': 'application/json',

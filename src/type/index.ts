@@ -8,11 +8,15 @@ export interface TypeUser {
 
 export interface TypeProduct {
     photo: string;
+    photo2: string;
+    photo3: string;
+    seller_id: string;
     name: string;
     category: string;
     description: string;
-    startAt: number;
-    uploader: TypeUser
+    start_datetime: Date;
+    end_datetime: Date;
+    start_price: number;
 }
 
 export interface TypeSellingProduct extends TypeProduct {
@@ -20,12 +24,7 @@ export interface TypeSellingProduct extends TypeProduct {
 }
 
 export interface TypeBiddingProduct extends TypeProduct {
-    usage: string;
-    challenge: {
-        created_at: number
-        price: number
-    }[]
-    hasSucceed: boolean //나한테 낙찰됐나요?
-    finished: boolean
-    quotation: number;
+    bidding_latency: number;
+    condition: string
+    lastBid: number;
 }

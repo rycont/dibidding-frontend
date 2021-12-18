@@ -22,14 +22,18 @@ const biddingTypePolicy = [
 
 export const SelectBiddingType: React.FC = () => {
   const navigate = useNavigate();
-  const selectBiddingPolicy = () => {
-    navigate("/register/info");
+  const selectBiddingPolicy = (policy: typeof biddingTypePolicy[number]) => {
+    navigate("/register/info", {
+      state: {
+        policy,
+      },
+    });
   };
   return (
     <Vexile padding={3} filly y="center" gap={3}>
       <Subheader>어떻게 경매를 올릴까요?</Subheader>
       {biddingTypePolicy.map((policy) => (
-        <BiddingType onClick={() => selectBiddingPolicy()} {...policy} />
+        <BiddingType onClick={() => selectBiddingPolicy(policy)} {...policy} />
       ))}
     </Vexile>
   );

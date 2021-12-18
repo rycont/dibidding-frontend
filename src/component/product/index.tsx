@@ -5,7 +5,7 @@ import { Badge, Photo, ProductWrapper } from "./style";
 
 const isBiddingProduct = (
   product: TypeProduct
-): product is TypeBiddingProduct => (product as any).quotation && true;
+): product is TypeBiddingProduct => (product as any).bidding_latency && true;
 
 export const ProductCore: React.FC<TypeBiddingProduct | TypeSellingProduct> = (
   props
@@ -14,16 +14,16 @@ export const ProductCore: React.FC<TypeBiddingProduct | TypeSellingProduct> = (
     <Vexile gap={3}>
       <Photo src={props.photo} />
       <Hexile linebreak gap={1}>
-        <Badge red>{props.name}</Badge>
-        {isBiddingProduct(props) && <Badge green>{props.usage}</Badge>}
+        <Badge red>{props.category}</Badge>
+        {isBiddingProduct(props) && <Badge green>{props.condition}</Badge>}
       </Hexile>
       <Vexile gap={1.5}>
         <Subheader>{props.name}</Subheader>
         <Description css={{ opacity: 0.4 }}>
           {isBiddingProduct(props)
-            ? props.challenge[0]
-              ? `지금 ${props.challenge[0].price}원 | 호가 ${props.quotation}원`
-              : `시작가 ${props.startAt}원 | 호가 ${props.quotation}원`
+            ? `지금 ${props.lastBid || props.start_price}원 | 호가 ${
+                props.bidding_latency
+              }원`
             : props.fixed_price + "원"}
         </Description>
         <Text>{props.description}</Text>
