@@ -13,7 +13,6 @@ import {
   EnterBiddingProductInfo,
   Login,
   ProductDescription,
-  ProductPage,
   ProductRegisterSuccess,
   Register,
   SelectBiddingType,
@@ -54,7 +53,6 @@ const AnimatedRouter = () => {
         <Routes location={location}>
           <Route path="/login" element={<Login />} />
           <Route path="/bidding" element={<BiddingMain />} />
-          <Route path="/product/:id" element={<ProductPage />} />
           <Route path="/register" element={<Register />} />
           <Route path="/register/type" element={<SelectBiddingType />} />
           <Route path="/register/info" element={<EnterBiddingProductInfo />} />

@@ -25,7 +25,7 @@ export const EnterBiddingProductInfo: React.FC<{}> = () => {
       state: {
         ...state,
         ...value,
-        image: reader.result,
+        image: (reader.result as string)?.split("base64,")[1],
       },
     });
   };

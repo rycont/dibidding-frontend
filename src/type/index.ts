@@ -1,3 +1,7 @@
+export type Doc<T> = T & {
+    _id: string;
+}
+
 export interface TypeUser {
     name: string
     user_id: string

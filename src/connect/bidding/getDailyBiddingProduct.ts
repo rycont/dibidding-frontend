@@ -1,7 +1,7 @@
-import { TypeProduct } from "@/type";
+import { Doc, TypeBiddingProduct, TypeProduct } from "@/type";
 import { createAPIConnector } from "..";
 
-export const getDailyBiddingProduct = createAPIConnector<{}, {}, TypeProduct[]>('/getdailybid', {
+export const getDailyBiddingProduct = createAPIConnector<{}, {}, Doc<TypeBiddingProduct>[]>('getdailybid', {
     method: 'GET',
     needAuth: false,
     mockHandler: () => [{
@@ -16,6 +16,8 @@ export const getDailyBiddingProduct = createAPIConnector<{}, {}, TypeProduct[]>(
         photo2: "",
         photo3: "",
         seller_id: "2443",
-        start_datetime: new Date('2021-12-17')
+        start_datetime: new Date('2021-12-17'),
+        start_price: 1000,
+        _id: "sakdfjlkdfjsklfjds"
     }]
 })

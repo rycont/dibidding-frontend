@@ -42,16 +42,18 @@ export const Login = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <Vexile gap={3} padding={3} filly y="center">
-        <Input label="아이디" register={register("userID")} />
-        <Input
-          type="password"
-          label="비밀번호"
-          register={register("password")}
-        />
-        <Button submit label="로그인" />
-      </Vexile>
-    </form>
+    <Vexile filly y="center">
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <Vexile gap={3} padding={3} filly y="center">
+          <Input label="아이디" register={register("userID")} />
+          <Input
+            type="password"
+            label="비밀번호"
+            register={register("password")}
+          />
+          <Button submit label="로그인" />
+        </Vexile>
+      </form>
+    </Vexile>
   );
 };

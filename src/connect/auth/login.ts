@@ -7,7 +7,7 @@ export interface LoginInfo {
 
 export const loginWithInfo = createAPIConnector<{}, LoginInfo, {
     token: string
-}>('/login', {
+}>('login', {
     method: "POST",
     needAuth: false,
     mockHandler: () => ({

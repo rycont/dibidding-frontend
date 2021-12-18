@@ -41,7 +41,7 @@ export const Product: React.FC<
     <ProductWrapper padding={3} gap={3}>
       <ProductCore {...props} />
       {props.onClickAction && (
-        <Button onClick={props.onClickAction} label="경매 참여하기" />
+        <Button onClick={props.onClickAction} label="참여하기" />
       )}
     </ProductWrapper>
   );

@@ -15,7 +15,7 @@ export const addNewBidding = createAPIConnector<
   {},
   RegisteringProduct,
   { product: TypeProduct }
->("/uploadbid", {
+>("uploadbid", {
   method: "POST",
   needAuth: true,
   mockHandler: () => ({

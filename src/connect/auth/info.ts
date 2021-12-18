@@ -3,7 +3,7 @@ import { createAPIConnector } from "..";
 
 export const getUserInfo = createAPIConnector<{}, {}, {
     userInfo: TypeUser,
-}>('/info', {
+}>('info', {
     method: "GET",
     needAuth: false,
     mockHandler: () => ({

@@ -17,10 +17,6 @@ export const ProductDescription: React.FC = () => {
   const setAlert = useRecoilState(modalContentAtom)[1];
 
   const onSubmit = async (value: FormInputs) => {
-    console.log({
-      ...state,
-      ...value,
-    });
     const registeringInfo = {
       ...(state as {
         policy: {
@@ -51,6 +47,7 @@ export const ProductDescription: React.FC = () => {
         state: addResult.product,
       });
     } catch (e) {
+      console.log(e);
       setAlert({
         content: "상품 등록에 실패했어요",
         title: "오류!",

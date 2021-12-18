@@ -1,9 +1,19 @@
 import { Description, Text } from "@/component";
-import { WaitingBidProductWrapper } from "./style";
+import { TypeBiddingProduct } from "@/type";
+import { useMemo } from "react";
+import { UpcomingBidProductWrapper } from "./style";
 
-export const WaitingBidProduct: React.FC = () => (
-  <WaitingBidProductWrapper y="center" x="space">
-    <Description>마더텅 2021 문학 기출</Description>
-    <Text>1일 뒤</Text>
-  </WaitingBidProductWrapper>
-);
+export const UpcomingBidProduct: React.FC<TypeBiddingProduct> = (props) => {
+  const startsAt = useMemo(
+    () => new Date(props.start_datetime),
+    [props.start_datetime]
+  );
+  return (
+    <UpcomingBidProductWrapper y="center" x="space">
+      <Description>{props.name}</Description>
+      <Text>
+        {startsAt.getMonth() + 1}월 {startsAt.getDate()}일
+      </Text>
+    </UpcomingBidProductWrapper>
+  );
+};
