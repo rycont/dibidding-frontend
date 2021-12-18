@@ -25,6 +25,7 @@ export const getUpcomingBidding = createAPIConnector<
       seller_id: "2443",
       start_datetime: new Date("2021-12-17"),
       start_price: 1000,
+      lastBidder: "3240",
     },
   ],
 });

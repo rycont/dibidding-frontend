@@ -8,7 +8,8 @@ export const getUserInfo = createAPIConnector<{}, {}, {
     needAuth: false,
     mockHandler: () => ({
         userInfo: {
-            dimigoin_uid: 1010,
+            dimigoin_uid: "1010",
+            _id: "sdfnfvieroh3487382u93j",
             name: "홍길도",
             student_id: "1010",
             user_id: "1010",

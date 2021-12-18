@@ -18,6 +18,7 @@ export const getDailyBiddingProduct = createAPIConnector<{}, {}, Doc<TypeBidding
         seller_id: "2443",
         start_datetime: new Date('2021-12-17'),
         start_price: 1000,
-        _id: "sakdfjlkdfjsklfjds"
+        _id: "sakdfjlkdfjsklfjds",
+        lastBidder: "3240"
     }]
 })
