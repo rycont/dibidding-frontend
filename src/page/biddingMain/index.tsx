@@ -12,7 +12,7 @@ import { UpcomingBidProduct } from "./partial";
 
 export const BiddingMain: React.FC = () => {
   const navigate = useNavigate();
-  const { data, loaded } = getDailyBiddingProduct.useHook();
+  const { data, loaded, reload } = getDailyBiddingProduct.useHook();
   const { data: upcoming } = getUpcomingBidding.useHook();
   const showAlert = useRecoilState(modalContentAtom)[1];
   const me = useRecoilValue(userAtom);
@@ -36,9 +36,8 @@ export const BiddingMain: React.FC = () => {
           onClickAction={() =>
             showAlert(() => ({
               button: {
-                action() {
-                  console.log("ASDF");
-                  participateBidding.request(
+                async action() {
+                  await participateBidding.request(
                     {
                       bidId: data[0]._id,
                     },
@@ -47,6 +46,7 @@ export const BiddingMain: React.FC = () => {
                         data[0].bidding_latency + data[0].lastBid,
                     }
                   );
+                  reload();
                 },
                 label: "네, 이해했습니다",
               },

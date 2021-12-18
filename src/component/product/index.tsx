@@ -51,6 +51,9 @@ export const Product: React.FC<
       {props.onClickAction && (
         <Button
           onClick={props.onClickAction}
+          disabled={
+            isMyBid || (isBiddingProduct(props) && props.lastBidder === me?._id)
+          }
           label={
             isMyBid
               ? `경매가 완료되지 않음`

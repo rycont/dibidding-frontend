@@ -22,6 +22,7 @@ export interface TypeProduct {
     start_datetime: Date;
     end_datetime: Date;
     start_price: number;
+    lastBidder: string;
 }
 
 export interface TypeSellingProduct extends TypeProduct {

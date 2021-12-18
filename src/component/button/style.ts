@@ -21,6 +21,11 @@ export const LogicalButton = styled('button', {
                 bottom: "3rem",
                 width: "calc(100% - 6rem)"
             }
+        },
+        disabled: {
+            true: {
+                backgroundColor: "#B5B5B5"
+            }
         }
     }
 })

@@ -5,6 +5,7 @@ import { LogicalButton, NextIconImage } from "./style";
 export const Button: React.FC<{
   label: string;
   nextIcon?: boolean;
+  disabled?: boolean;
   submit?: boolean;
   small?: boolean;
   css?: Record<string, string | number>;
