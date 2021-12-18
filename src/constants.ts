@@ -1,1 +1,1 @@
-export const API_URI = "http://dibidding-api.rycont.ninja/"
+export const API_URI = "https://dibidding-api.rycont.ninja/"
