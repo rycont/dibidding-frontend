@@ -1,9 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ReactDOM from "react-dom";
 import "josa-complete";
 import { RecoilRoot } from "recoil";
 import RecoilNexus from "recoil-nexus";
-import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
+import {
+  BrowserRouter,
+  NavigateFunction,
+  Route,
+  Routes,
+  useLocation,
+  useNavigate,
+} from "react-router-dom";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 
 import { globalCss } from "#/stitches.config";
@@ -71,12 +78,24 @@ const AnimatedRouter = () => {
   );
 };
 
+export let outsideNavigate: NavigateFunction;
+
+const OutsideRouter = () => {
+  const navigate = useNavigate();
+  useEffect(() => {
+    outsideNavigate = ((route, config) =>
+      navigate(route, config)) as NavigateFunction;
+  }, [navigate]);
+  return <></>;
+};
+
 ReactDOM.render(
   <React.StrictMode>
     <RecoilRoot>
       <RecoilNexus />
       <BrowserRouter>
         <AnimatedRouter />
+        <OutsideRouter />
       </BrowserRouter>
     </RecoilRoot>
   </React.StrictMode>,

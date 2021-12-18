@@ -9,8 +9,10 @@ export const AuthBrancher = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (user) navigate("/bidding");
-    else navigate("/login");
+    // if (user)
+    navigate("/bidding");
+    // else
+    //   navigate("/login");
   }, [user]);
 
   return <></>;

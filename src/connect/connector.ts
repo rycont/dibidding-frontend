@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import { API_URI } from '@/constants'
 import { isDev } from '@/function'
 import { tokenAtom } from "@/coil";
+import { outsideNavigate } from "@/main";
 
 export const fillURLParameter = <URLParams>(
     route: string,
@@ -44,6 +45,7 @@ export function createAPIConnector<
         const user = getRecoil(tokenAtom)
 
         if (!user) {
+            outsideNavigate('/login')
             throw new Error("NEEDAUTH");
         }
 

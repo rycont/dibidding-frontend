@@ -14,11 +14,17 @@ export interface ModalContent {
 }
 
 export const useModal = () => {
-  const content = useRecoilValue(modalContentAtom);
+  const [content, setContent] = useRecoilState(modalContentAtom);
 
   const element = content ? (
-    <ModalBackdrop fillx filly x="center" y="center">
-      <ModalWrapper fillx gap={2}>
+    <ModalBackdrop
+      fillx
+      filly
+      x="center"
+      y="center"
+      onClick={() => setContent(null)}
+    >
+      <ModalWrapper fillx gap={2} onClick={(e) => e.preventDefault()}>
         <Description>{content.title}</Description>
         <Text>{content.content}</Text>
         <Button

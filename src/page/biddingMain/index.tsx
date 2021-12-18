@@ -1,4 +1,4 @@
-import { modalContentAtom } from "@/coil";
+import { modalContentAtom, userAtom } from "@/coil";
 import { Button, Description, Hexile, Product, Vexile } from "@/component";
 import {
   getDailyBiddingProduct,
@@ -7,7 +7,7 @@ import {
 } from "@/connect";
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { UpcomingBidProduct } from "./partial";
 
 export const BiddingMain: React.FC = () => {
@@ -15,16 +15,21 @@ export const BiddingMain: React.FC = () => {
   const { data, loaded } = getDailyBiddingProduct.useHook();
   const { data: upcoming } = getUpcomingBidding.useHook();
   const showAlert = useRecoilState(modalContentAtom)[1];
+  const me = useRecoilValue(userAtom);
 
   return (
     <Vexile padding={3} gap={3}>
       <Hexile x="space" y="center">
         <Description css={{ flex: 1 }}>디비딩 :)</Description>
-        <Button
-          label="내 물건 올리기"
-          small
-          onClick={() => navigate("/register")}
-        />
+        {me ? (
+          <Button
+            label="내 물건 올리기"
+            small
+            onClick={() => navigate("/register")}
+          />
+        ) : (
+          <Button label="로그인" small onClick={() => navigate("/login")} />
+        )}
       </Hexile>
       {loaded && data?.[0] && (
         <Product
