@@ -7,7 +7,8 @@ export interface TypeUser {
     user_id: string
     user_photo: string
     student_id: string
-    dimigoin_uid: number
+    dimigoin_uid: string
+    _id: string
 }
 
 export interface TypeProduct {

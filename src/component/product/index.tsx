@@ -1,5 +1,7 @@
+import { userAtom } from "@/coil";
 import { TypeBiddingProduct, TypeProduct, TypeSellingProduct } from "@/type";
-import React from "react";
+import React, { useMemo } from "react";
+import { useRecoilValue } from "recoil";
 import { Button, Description, Hexile, Subheader, Text, Vexile } from "..";
 import { Badge, Photo, ProductWrapper } from "./style";
 
@@ -37,11 +39,26 @@ export const Product: React.FC<
     onClickAction?(): void;
   }
 > = (props) => {
+  const me = useRecoilValue(userAtom);
+  const isMyBid = useMemo(
+    () => props.seller_id === me?._id,
+    [props.seller_id, me?._id]
+  );
+
   return (
     <ProductWrapper padding={3} gap={3}>
       <ProductCore {...props} />
       {props.onClickAction && (
-        <Button onClick={props.onClickAction} label="참여하기" />
+        <Button
+          onClick={props.onClickAction}
+          label={
+            isMyBid
+              ? `경매가 완료되지 않음`
+              : isBiddingProduct(props)
+              ? `${props.lastBid + props.bidding_latency}원에 참여하기`
+              : `${props.fixed_price}원에 구매하기`
+          }
+        />
       )}
     </ProductWrapper>
   );
