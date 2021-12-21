@@ -1,10 +1,11 @@
 import { Button, Product, Subheader, Text, Vexile } from "@/component";
 import { TypeBiddingProduct, TypeProduct } from "@/type";
 import { useMemo } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export const ProductRegisterSuccess = () => {
   const { state } = useLocation() as { state: TypeBiddingProduct };
+  const navigate = useNavigate()
   const startDate = useMemo(() => new Date(state.start_datetime), [state]);
   return (
     <Vexile x="center" gap={3} padding={3}>
@@ -15,7 +16,7 @@ export const ProductRegisterSuccess = () => {
           시작될 예정이에요
         </Text>
       </Vexile>
-      <Button label="다음" nextIcon />
+      <Button label="다음" nextIcon onClick={() => navigate('/bidding')} />
       <Text>아래 이미지를 캡쳐해서 홍보하세요 :)</Text>
       <Vexile css={{ width: "100%" }}>
         <Product {...state} />
