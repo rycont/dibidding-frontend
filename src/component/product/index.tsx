@@ -23,9 +23,8 @@ export const ProductCore: React.FC<TypeBiddingProduct | TypeSellingProduct> = (
         <Subheader>{props.name}</Subheader>
         <Description css={{ opacity: 0.4 }}>
           {isBiddingProduct(props)
-            ? `지금 ${props.lastBid || props.start_price}원 | 호가 ${
-                props.bidding_latency
-              }원`
+            ? `지금 ${props.lastBid || props.start_price}원 | 호가 ${props.bidding_latency
+            }원`
             : props.fixed_price + "원"}
         </Description>
         <Text>{props.description}</Text>
@@ -58,8 +57,8 @@ export const Product: React.FC<
             isMyBid
               ? `경매가 완료되지 않음`
               : isBiddingProduct(props)
-              ? `${props.lastBid + props.bidding_latency}원에 참여하기`
-              : `${props.fixed_price}원에 구매하기`
+                ? `${(props.lastBid || props.start_price) + props.bidding_latency}원에 참여하기`
+                : `${props.fixed_price}원에 구매하기`
           }
         />
       )}
