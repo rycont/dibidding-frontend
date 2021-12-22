@@ -22,7 +22,7 @@ export interface TypeProduct {
     start_datetime: Date;
     end_datetime: Date;
     start_price: number;
-    lastBidder: string;
+    lastbidder: string;
 }
 
 export interface TypeSellingProduct extends TypeProduct {
@@ -32,5 +32,5 @@ export interface TypeSellingProduct extends TypeProduct {
 export interface TypeBiddingProduct extends TypeProduct {
     bidding_latency: number;
     condition: string
-    lastBid: number;
+    lastbid: number;
 }

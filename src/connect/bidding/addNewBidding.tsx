@@ -31,7 +31,7 @@ export const addNewBidding = createAPIConnector<
       seller_id: "1010",
       start_datetime: new Date("2021-12-19"),
       start_price: 1000,
-      lastBidder: "320",
+      lastbidder: "320",
     },
   }),
 });

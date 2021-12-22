@@ -19,6 +19,7 @@ export const Button: React.FC<{
       css={props.css}
       onClick={props.onClick}
       floating={props.floating}
+      disabled={props.disabled}
     >
       <Hexile x="center" y="center" gap={2}>
         <Description>{props.label}</Description>

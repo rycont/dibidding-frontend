@@ -5,15 +5,15 @@ import { UpcomingBidProductWrapper } from "./style";
 
 export const UpcomingBidProduct: React.FC<TypeBiddingProduct> = (props) => {
   const startsAt = useMemo(
-    () => new Date(props.start_datetime),
+    () => props && new Date(props.start_datetime),
     [props.start_datetime]
   );
   return (
     <UpcomingBidProductWrapper y="center" x="space">
       <Description>{props.name}</Description>
-      <Text>
+      {startsAt && <Text>
         {startsAt.getMonth() + 1}월 {startsAt.getDate()}일
-      </Text>
+      </Text>}
     </UpcomingBidProductWrapper>
   );
 };

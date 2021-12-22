@@ -43,7 +43,7 @@ export const BiddingMain: React.FC = () => {
                     },
                     {
                       userRequestedPrice:
-                        (data[0].bidding_latency + data[0].lastBid) || data[0].start_price,
+                        (data[0].lastbid || data[0].start_price) + data[0].bidding_latency,
                     }
                   );
                   reload();

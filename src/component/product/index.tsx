@@ -23,7 +23,7 @@ export const ProductCore: React.FC<TypeBiddingProduct | TypeSellingProduct> = (
         <Subheader>{props.name}</Subheader>
         <Description css={{ opacity: 0.4 }}>
           {isBiddingProduct(props)
-            ? `지금 ${props.lastBid || props.start_price}원 | 호가 ${props.bidding_latency
+            ? `지금 ${props.lastbid || props.start_price}원 | 호가 ${props.bidding_latency
             }원`
             : props.fixed_price + "원"}
         </Description>
@@ -43,6 +43,11 @@ export const Product: React.FC<
     () => props.seller_id === me?._id,
     [props.seller_id, me?._id]
   );
+  const isLastBidIsMe = useMemo(() =>
+    isBiddingProduct(props) && props.lastbidder === me?.dimigoin_uid
+    , [props, me])
+
+  console.log(props.lastbidder, me?.dimigoin_uid)
 
   return (
     <ProductWrapper padding={3} gap={3}>
@@ -51,13 +56,15 @@ export const Product: React.FC<
         <Button
           onClick={props.onClickAction}
           disabled={
-            isMyBid || (isBiddingProduct(props) && props.lastBidder === me?._id)
+            isMyBid || isLastBidIsMe
           }
           label={
             isMyBid
               ? `경매가 완료되지 않음`
               : isBiddingProduct(props)
-                ? `${(props.lastBid || props.start_price) + props.bidding_latency}원에 참여하기`
+                ? (
+                  isLastBidIsMe ? "연속으로 입찰할 수 없어요" : `${(props.lastbid || props.start_price) + props.bidding_latency}원에 참여하기`
+                )
                 : `${props.fixed_price}원에 구매하기`
           }
         />
